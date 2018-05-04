@@ -37,7 +37,7 @@ tap.test('allow if key passed ', async(t) => {
   const server = new Hapi.Server({ port: 8080 });
   server.settings.app = {
     hapiConfigRoute: 'inthehouse'
-  }
+  };
   process.env.HAPICONFIGPLUGIN = 1234;
   await server.register({
     plugin,
@@ -60,7 +60,7 @@ tap.test('disable env ', async(t) => {
   const server = new Hapi.Server({ port: 8080 });
   server.settings.app = {
     hapiConfigRoute: 'inthehouse'
-  }
+  };
   process.env.HAPICONFIGPLUGIN = 1234;
   await server.register({
     plugin,
