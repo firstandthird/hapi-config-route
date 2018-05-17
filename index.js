@@ -9,11 +9,11 @@ const register = (server, pluginOptions) => {
   if (!options.key) {
     throw new Error('hapi-config-route requires a secure key');
   }
-  server.route({
+  const routeSpec = {
     method: 'get',
     path: options.endpoint,
     handler(request, h) {
-      if (request.query.key !== options.key) {
+      if (!options.auth && request.query.key !== options.key) {
         return boom.unauthorized();
       }
       const ret = {
@@ -24,7 +24,11 @@ const register = (server, pluginOptions) => {
       }
       return ret;
     }
-  });
+  };
+  if (options.auth) {
+    routeSpec.config = { auth: options.auth };
+  }
+  server.route(routeSpec);
 };
 
 exports.plugin = {
