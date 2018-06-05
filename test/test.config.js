@@ -128,3 +128,33 @@ tap.test('config will be protected by auth if one is passed in ', async(t) => {
   t.equal(response.statusCode, 302, 'auth should redirect to a login page if it was registered');
   t.end();
 });
+
+tap.test('config will be exempted from default auth if auth is false ', async(t) => {
+  const server = new Hapi.Server({ port: 8080 });
+  server.settings.app = {
+    hapiConfigRoute: 'inthehouse'
+  };
+  process.env.HAPICONFIGPLUGIN = 1234;
+  // register hapi-password to be our auth scheme:
+  await server.register({
+    plugin: hapiPassword,
+    options: {
+      salt: 'aSalt',
+      password: 'password'
+    }
+  });
+  await server.register({
+    plugin,
+    options: {
+      key: 'key',
+      auth: false,
+      endpoint: '/endpoint'
+    }
+  });
+  const response = await server.inject({
+    url: '/endpoint?key=key',
+    method: 'GET',
+  });
+  t.equal(response.statusCode, 200, 'auth should be deactivated for the route');
+  t.end();
+});
