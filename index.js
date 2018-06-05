@@ -25,7 +25,7 @@ const register = (server, pluginOptions) => {
       return ret;
     }
   };
-  if (options.auth) {
+  if (options.auth || options.auth === false) {
     routeSpec.config = { auth: options.auth };
   }
   server.route(routeSpec);
