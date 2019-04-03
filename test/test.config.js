@@ -183,5 +183,4 @@ tap.test('log to server if requested ', async(t) => {
   });
   t.equal(response.statusCode, 200);
   t.equal(response.result, 'See server log for config info (tag is "config")');
-  // setTimeout(t.end, 800);
 });
