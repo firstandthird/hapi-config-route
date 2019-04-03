@@ -158,3 +158,29 @@ tap.test('config will be exempted from default auth if auth is false ', async(t)
   t.equal(response.statusCode, 200, 'auth should be deactivated for the route');
   t.end();
 });
+
+tap.test('log to server if requested ', async(t) => {
+  const server = new Hapi.Server({ port: 8080 });
+  t.plan(4);
+  server.settings.app = {
+    hapiConfigRoute: 'inthehouse'
+  };
+  process.env.HAPICONFIGPLUGIN = 1234;
+  await server.register({
+    plugin,
+    options: {
+      key: 'key',
+      output: 'log'
+    }
+  });
+  server.events.on('log', (evt) => {
+    t.equal(evt.tags[0], 'config');
+    t.equal(evt.data.settings.hapiConfigRoute, 'inthehouse');
+  });
+  const response = await server.inject({
+    url: '/_config?key=key',
+    method: 'GET',
+  });
+  t.equal(response.statusCode, 200);
+  t.equal(response.result, 'See server log for config info (tag is "config")');
+});

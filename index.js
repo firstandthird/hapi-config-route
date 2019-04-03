@@ -1,7 +1,8 @@
 const boom = require('boom');
 const pluginDefaults = {
   includeEnvVars: true,
-  endpoint: '/_config'
+  endpoint: '/_config',
+  output: 'response'
 };
 
 const register = (server, pluginOptions) => {
@@ -22,7 +23,11 @@ const register = (server, pluginOptions) => {
       if (options.includeEnvVars) {
         ret.env = process.env;
       }
-      return ret;
+      if (options.output === 'response') {
+        return ret;
+      }
+      server.log(['config'], ret);
+      return 'See server log for config info (tag is "config")';
     }
   };
   if (options.auth || options.auth === false) {
