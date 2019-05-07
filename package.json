@@ -18,18 +18,17 @@
     "url": "https://github.com/firstandthird/hapi-config-route/issues"
   },
   "homepage": "https://github.com/firstandthird/hapi-config-route#readme",
-  "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-firstandthird": "^4.3.0",
-    "eslint-plugin-import": "^2.11.0",
-    "hapi": "^17.4.0",
-    "hapi-password": "^5.1.0",
-    "tap": "^11.1.4"
-  },
+  "devDependencies": {},
   "eslintConfig": {
     "extends": "firstandthird"
   },
   "dependencies": {
-    "boom": "^7.2.0"
+    "boom": "^7.3.0",
+    "eslint": "^5.16.0",
+    "eslint-config-firstandthird": "^4.3.0",
+    "eslint-plugin-import": "^2.17.2",
+    "hapi": "^18.1.0",
+    "hapi-password": "^6.0.0",
+    "tap": "^13.1.2"
   }
 }
