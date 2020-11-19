@@ -1,6 +1,6 @@
 const tap = require('tap');
-const Hapi = require('hapi');
-const plugin = require('../index.js');
+const Hapi = require('@hapi/hapi');
+const plugin = require('..');
 const hapiPassword = require('hapi-password');
 
 tap.test('throw error if no key ', async(t) => {
