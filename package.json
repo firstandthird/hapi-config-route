@@ -4,8 +4,8 @@
   "description": "hapi plugin for configuring routes",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
-    "test": "tap --cov test"
+    "lint": "eslint",
+    "test": "tap"
   },
   "repository": {
     "type": "git",
@@ -19,17 +19,14 @@
   },
   "homepage": "https://github.com/firstandthird/hapi-config-route#readme",
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-firstandthird": "^4.3.0",
-    "eslint-plugin-import": "^2.17.2",
-    "@hapi/hapi": "^18.4.0",
-    "hapi-password": "^6.0.0",
-    "tap": "^13.1.2"
-  },
-  "eslintConfig": {
-    "extends": "firstandthird"
+    "eslint": "^7.13.0",
+    "eslint-config-firstandthird": "^6.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "@hapi/hapi": "^20.0.2",
+    "hapi-password": "^7.0.0",
+    "tap": "^14.11.0"
   },
   "dependencies": {
-    "boom": "^7.3.0"
+    "@hapi/boom": "^7.3.0"
   }
 }

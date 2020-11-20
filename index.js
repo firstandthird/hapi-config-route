@@ -1,4 +1,4 @@
-const boom = require('boom');
+const boom = require('@hapi/boom');
 const pluginDefaults = {
   includeEnvVars: true,
   endpoint: '/_config',
