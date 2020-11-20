@@ -12,7 +12,7 @@
 
 hapi plugin for configuring routes
 
-## Instalation
+## Installation
 
 ```sh
 npm install hapi-config-route
